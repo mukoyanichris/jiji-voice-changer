@@ -1,0 +1,10 @@
+# 0) Virtual mic (once)
+pactl load-module module-null-sink media.class=Audio/Sink \
+  sink_name=VirtualMic sink_properties=node.description=VirtualMic
+
+# 1) Deps
+sudo apt install rubberband-cli librubberband-dev
+pip install sounddevice numpy scipy pyrubberband   # (optional) webrtc-audio-processing
+
+# 2) Start (female preset for clear demo)
+PULSE_PROP="application.name=JijiMinds Voice" python voice_changer.py --preset female
